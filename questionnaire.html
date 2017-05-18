@@ -1,0 +1,133 @@
+<! DOCTYPE html>
+<html>
+  
+  
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  
+  <header style="height: 100px; background-color: #005493;">
+   <img src = "https://d2q79iu7y748jz.cloudfront.net/s/_logo/d3bd43540b7b07d083c1e0c0eba5bef7.png" height = 100>
+</header>
+  
+  <style>
+    
+    table, th, td {
+      border: 2px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 15px;
+    }
+    
+    .centered {
+    margin: 0 auto;
+    text-align: left;
+    width: 800px;
+    }
+  
+  </style>
+  
+  <title>Suggested Courses Questionnaire</title>
+  
+  <body>
+    
+   <div style="width:100%; background:#005493">
+
+    <form>
+      <input type="button" value="My Page" onclick="window.location.href='https://uvic.ca/mypage'" />
+     
+      <input type="button" value="Schedule" onclick="window.location.href='schedule.html'" /> 
+      <input type="button" value="Questionnaire" onclick="window.location.href='questionnaire.html'" />
+      <input type="button" value="Sign Out of UVic" onclick="window.location.href='log out.html'" style="float: right;" />
+    </form>
+  </div>
+    
+    <div  class = "centered">
+    
+  <h2 style="text-align: center">Suggested Courses Questionnaire</h2>
+  <hr>
+  <p>
+    Please fill out the following questions to customize your suggested courses. This survery is
+    completely optional. If you do not fill it out, your suggested courses will be generated based on
+    your current program of study and prerequisites. You do not need to fill out all the questions,
+    however, to get the best suggestions possible, we recommend you answer all of them.
+  </p>
+  <hr>
+  
+  <h2 style="color:blue;text-align: center">Course Time Preferences</h2>
+  <p>
+    For the questions below, please rate the three course times according to your favourite. Select 1
+    for your preferred course time, and 3 for your least preferred course time. If all are left blank or
+    all are rated equally, all course times will be given equal priority.
+  </p>
+  
+  <form action="/action_page.php">
+  <table style="color:blue;text-align: center" >
+    <tr>
+      <th></th>
+      <th>1 (favourite)</th> 
+      <th>2 (neutral)</th>
+      <th>3 (least favourite)</th>
+    </tr>
+    <tr>
+      <td>Morning classes (Between 8AM and 12PM)</td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>Afternoon Classes (Between 12PM and 4PM)</td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>Evening classes (After 5pm)</td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+    </tr>
+  </table>
+  </form>
+  
+  <hr>
+    
+  <h2 style="color:blue;text-align: center">Faculty and Department Preferences</h2>
+  <p>
+    For the following faculties, please select all that interest you. Click on the expand button to
+    select specific departments in the faculty. If no specific departments are selected within a 
+    chosen faculty, all departments will be considered. If left blank, other criteria on this form will be
+    used to generate suggested courses, and all faculties will be given equal priority. <i>Please note
+    that despite having preferences in departments of your own, if any courses of those
+    courses are restricted to students registered in that department, those courses will not be
+    suggested. Only courses which you can register in for this current semester will be suggested.</i>
+  </p>
+    
+  <form action="/questionnaire2.html">
+  <input type="checkbox" name="option1" value="Education">Faculty of Education
+  <br><br>
+  <input type="checkbox" name="option2" value="Engineering">Faculty of Engineering 
+  <br><br>
+  <input type="checkbox" name="option3" value="FineArts">Faculty of Fine Arts
+  <br><br>
+  <input type="checkbox" name="option4" value="HSD">Faculty of Human and Social Development 
+  <br><br>
+  <input type="checkbox" name="option5" value="Humanities">Faculty of Humanities
+  <br><br>
+  <input type="checkbox" name="option6" value="Science">Faculty of Science 
+  <br><br>
+  <input type="checkbox" name="option7" value="SScience">Faculty of Social Scieneces
+  <br><br>
+  <input type="checkbox" name="option8" value="Business">Peter B. Gustavson School of Business 
+  <br><br>
+  <button onclick="goBack()">Next Page</button>
+  </form> 
+    </div>
+
+  </body>
+  
+  
+</html>

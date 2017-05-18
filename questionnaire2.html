@@ -1,0 +1,163 @@
+<! DOCTYPE html>
+<html>
+  
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  
+  <header style="height: 100px; background-color: #005493;">
+   <img src = "https://d2q79iu7y748jz.cloudfront.net/s/_logo/d3bd43540b7b07d083c1e0c0eba5bef7.png" height = 100>
+</header>
+   
+  <style>
+    
+    table, th, td {
+      border: 2px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 15px;
+    }
+    
+     .centered {
+    margin: 0 auto;
+    text-align: left;
+    width: 800px;
+    }
+    
+  
+  </style>
+  
+  
+  <title>Suggested Courses Questionnaire</title>
+  
+  <body>
+    
+     <div style="width:100%; background:#005493">
+
+    <form>
+      <input type="button" value="My Page" onclick="window.location.href='https://uvic.ca/mypage'" />
+      
+      <input type="button" value="Schedule" onclick="window.location.href='schedule.html'" />
+      <input type="button" value="Questionnaire" onclick="window.location.href='questionnaire.html'" />
+      <input type="button" value="Sign Out of UVic" onclick="window.location.href='log out.html'" style="float: right;"/>
+    </form>
+  </div> 
+    
+     <div  class = "centered">
+    
+  <h2>Suggested Courses Questionnaire</h2>
+  <hr>
+  <p>
+    Please fill out the following questions to customize your suggested courses. This survery is
+    completely optional. If you do not fill it out, your suggested courses will be generated based on
+    your current program of study and prerequisites. You do not need to fill out all the questions,
+    however, to get the best suggestions possible, we recommend you answer all of them.
+  </p>
+  <hr>
+    
+  <h2 style="color:blue;text-align: center">Course Level and Course Design</h2>
+    
+  <p>
+    For the questions below, please rate the three course times according to your favourite. Select 1
+    for your preferred course time, and 4 for your least preferred course time. If all are left blank or
+    all are rated equally, all courses will be given equal priority. 
+  </p>
+  
+  <form action="/action_page.php">
+  <table style="width:100% ;color:blue;text-align: center">
+    <tr>
+      <th>Course Level</th>
+      <th>1 (favourite)</th> 
+      <th>2</th>
+      <th>3</th>
+      <th>4 (least favourite)</th>
+    </tr>
+    <tr>
+      <td>First Year</td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>Second Year</td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>Third Year</td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+    </tr>
+    <tr>
+      <td>Fourth Year</td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+      <td><input type="checkbox"></td>
+    </tr>
+  </table>
+  </form>
+    
+  <br>
+  <p>Would you like us to consider:</p>
+  
+  <form action="/questionnaire3.html">
+  <input type="checkbox" name="option1" value="OnCampus">On-campus courses
+  <br><br>
+  <input type="checkbox" name="option2" value="OffCampus">Off-campus courses 
+  <br><br>
+  <input type="checkbox" name="option3" value="Online">Online
+  <br><br>
+  </form>
+    
+  <hr>
+    
+  <h2 style="color:blue;text-align: center">Interests and Other Preferences</h2>
+    
+  <p>
+    Select all the subject areas that interest you. This will help customize the course
+    suggestions further.
+  </p>
+  <br>
+    
+  <form action="/questionnaire3.html">
+  <input type="checkbox" name="option1" value="Sciences">Sciences
+  <br><br>
+  <input type="checkbox" name="option2" value="Music">Music
+  <br><br>
+  <input type="checkbox" name="option3" value="PublicSpeaking">Public Speaking
+  <br><br>
+  <input type="checkbox" name="option4" value="Children">Children 
+  <br><br>
+  <input type="checkbox" name="option5" value="History">History
+  <br><br>
+  <input type="checkbox" name="option6" value="Arts">Arts
+  <br><br>
+  <input type="checkbox" name="option7" value="Numbers">Numbers
+  <br><br>
+  <input type="checkbox" name="option8" value="SocialJustice">Social Justice
+  <br><br>
+  <input type="checkbox" name="option9" value="MindBody">Mind and Body
+  <br><br>
+  <input type="checkbox" name="option10" value="NatureEnvironmentalism">Nature and Environmentalism
+  <br><br>
+  <input type="checkbox" name="option11" value="PC">Pop-Culture
+  <br><br>
+  <input type="checkbox" name="option12" value="FinanceBusiness">Finance and Business
+  <br><br>
+  <button onclick="goBack()">Next Page</button>
+  </form>
+       
+  <form action="/questionnaire.html">
+  <button onclick="goBack()">Go Back</button>
+  </form>
+  
+</html>

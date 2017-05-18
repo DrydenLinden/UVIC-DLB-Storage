@@ -1,0 +1,484 @@
+<! DOCTYPE html>
+<!-- Things to do:
+
+
+-->
+
+<html>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<style>
+  
+  div.tt {
+    border-radius 20px;
+    position:absolute; 
+    height: 60px;
+    width: 16.8%;
+    z-index: 10;
+    border: 3px solid black;
+    background: #9999ff;
+   
+  }
+  button.remove{
+    height: 80%;
+    width: 40%;
+    margin: 2.9%;
+  }
+  
+  table,
+  th{
+    width: 250px
+  }
+  td {
+    border: 1px solid black;
+    height: 30px
+  }
+  
+  
+  input[type=text] {
+    width: 20%;
+    padding: 1% 1%;
+    margin: 8px 0;
+    border: 1px solid #333;
+    box-sizing: border-box;
+  }
+  
+  button {
+    background-color: #333ccc;
+    color: white;
+    padding: 1% 1%;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 10%;
+  }
+  
+  add {
+    background-color: #f1f1f1;
+    color: white;
+    padding: 1% 1%;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 60%;
+  }
+  
+  
+</style>
+
+
+
+<header style="height: 100px; background-color: #005493;">
+  <img src="https://d2q79iu7y748jz.cloudfront.net/s/_logo/d3bd43540b7b07d083c1e0c0eba5bef7.png" height=100>
+</header>
+
+<head>
+  <title>Course View </title>
+
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.css">
+</head>
+
+
+<body>
+
+  <script type="text/javascript">
+    $(function() {
+      $(".chzn-select").chosen();
+    });
+    
+    function AddCourse(coursetime, courselist){
+      if(courselist == '461suggested') {
+        document.getElementById("461button").disabled = "true";
+      }
+      document.getElementById(courselist).style.display = "none";
+      document.getElementById(coursetime).style.display = "block";
+    }
+    
+    function RemoveCourse(coursetime, courselist){
+      document.getElementById(courselist).style.display = "block";
+      document.getElementById(coursetime).style.display = "none";
+    }
+    
+    function Autoschedule(){
+      AddCourse('111timetable', '111suggested')
+      AddCourse('461timetable', '461suggested')
+      AddCourse('460timetable', '460suggested')
+      AddCourse('320timetable', '320suggested')
+      AddCourse('303timetable', '303suggested')
+    }
+    
+    
+  </script>
+
+  <div style="width:100%;background-color: #005493;">
+
+
+    <input type="button" value="My Page" onclick="window.location.href='https://uvic.ca/mypage'" />
+    <input type="button" value="Schedule" onclick="window.location.href='schedule.html'" />
+    <input type="button" value="Questionnaire" onclick="window.location.href='questionnaire.html'" />
+
+    <input type="button" value="Sign Out of UVic" onclick="window.location.href='log out.html'" style="float: right;" />
+
+  </div>
+  <!-- top  -->
+  <div>
+    <div style=" float:left; width:50%; padding-left: 350px;">
+
+      <b style="font-size: 20px">Course Search</b>
+
+    </div>
+    <div style=" float:right; font-size: 20px; padding-right:350px">
+      <b>Suggested Courses</b>
+
+    </div>
+  </div>
+  <!-- the middle two sections -->
+  <div>
+
+    <hr>
+
+    <!-- search section needs to be fully implemented and centered -->
+    <div id="search" style=" height:90%; width:50%; float:left; padding-left:200px;">
+      <p style="padding-left:50px;">
+        Hover over courses in dropdown to view professor and times!
+      </p>
+        <select class="chzn-select" multiple="true" name="course select" style="width:400px;" data-placeholder="Search for a course">
+          <option id = "461button" value="SENG 461" title = "George Tzanetakis TWF 1:00 - 2:00">SENG 461</option>
+          <option disabled = "true" value="SENG 460" title = "Bill Bird  TWF 2:00 - 3:00">SENG 460</option>
+          <option disabled = "true" value="SENG 320" title = "Michael Zastre  TWF 12:00 - 1:00">SENG 320</option>
+          <option disabled = "true" value="CSC 330" title = "Michael Zastre  MTh 10:30 - 12:00">CSC 330</option>
+          <option disabled = "true" value="CSC 303" title = "William T  MTh 11:00 - 12:30">CSC 303</option>
+          <option disabled = "true" value="ASTR 111" title = "Michael T  MTh 12:30 - 2:00">ASTR 111</option>
+          </select>
+        <button type="add" onclick="AddCourse('461timetable', '461suggested')" style = "width: 80px; height: 40px"> Submit </button>
+      
+
+    </div>
+    <!-- suggested section-->
+
+    <div id="suggested" style="height:100%; width:50%; float:right; border-left:medium #000 solid;">
+      <div id="461suggested" style="height:19%; width:100%;padding:1%;">
+        <div style="border:medium #000 solid; height:85%; width:60%; margin:0 auto;background:#FF9999">
+          <p>
+            SENG 461 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seats Remaining 7 <br> TWF 1:00- 2:00 <br>
+            <!-- below is the buttons for the register and view course -->
+            George T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="add" onclick="AddCourse('461timetable', '461suggested')" style="margin:0px auto; height:50%; width:30%;"> Add To <br>Calendar </button>
+            <button
+              type="add" style="margin:0px auto; height:50%; width:30%;"> Register <br> . </button>
+
+
+          </p>
+        </div>
+      </div>
+      <div id="460suggested" style="height:19%; width:100%;padding:1%;">
+        <div  style="border:medium #000 solid; height:85%; width:60%; margin:0 auto;background: #9999ff">
+          <p>
+            SENG 460 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seats Remaining 7 <br> TWF 2:00- 3:00 <br>
+            <!-- below is the buttons for the register and view course -->
+            Bill Bird&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="add" onclick="AddCourse('460timetable', '460suggested')" style="margin:0px auto; height:50%; width:30%;"> Add To <br>Calendar </button> <button type="add" style="margin:0px auto; height:50%; width:30%;"> Register <br> . </button>
+
+
+          </p>
+        </div>
+      </div>
+      <div id="320suggested" style="height:19%; width:100%;padding:1%;">
+
+        <div  style="border:medium #000 solid; height:85%; width:60%; margin:0 auto;background:#9999ff;">
+          <p>
+            SENG 320 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seats Remaining 4 <br> TWF 12:00- 1:00 <br>
+            <!-- below is the buttons for the register and view course -->
+            M Zastre&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="add" onclick="AddCourse('320timetable', '320suggested')" style="margin:0px auto; height:50%; width:30%;"> Add To <br>Calendar </button> <button type="add" style="margin:0px auto; height:50%; width:30%;"> Register <br> . </button>
+
+
+          </p>
+        </div>
+      
+        
+      </div>
+<div id="303suggested" style="height:19%; width:100%;padding:1%;">
+        <div  style="border:medium #000 solid; height:90%; width:60%; margin:0 auto;background: #9999ff">
+          <p>
+            SENG 303 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seats Remaining 7 <br> MTh 11:00- 12:30 <br>
+            <!-- below is the buttons for the register and view course -->
+            William T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="add" onclick="AddCourse('303timetable', '303suggested')" style="margin:0px auto; height:50%; width:30%;"> Add To <br>Calendar </button> <button type="add" style="margin:0px auto; height:50%; width:30%;"> Register <br> . </button>
+
+
+          </p>
+        </div>
+      </div>
+          <div id="111suggested" style="height:19%; width:100%;padding:1%;">
+        <div  style="border:medium #000 solid; height:90%; width:60%; margin:0 auto;background: #9999ff;">
+          <p>
+            Astr 111 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Seats Remaining 7 <br> MTh 12:30- 2:00 <br>
+            
+            Michael T&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="add" onclick="AddCourse('111timetable', '111suggested')" style="margin:0px auto; height:50%; width:30%;"> Add To <br>Calendar </button> <button type="add" style="margin:0px auto; height:50%; width:30%;"> Register <br> . </button>
+
+
+          </p>
+        </div>
+  </div>
+      <!-- the Auto generate courses button needs to be centered and rounded -->
+
+
+
+      <div style="margin:0px auto; padding-left:30%; padding-right:10%; height:7%;">
+        <button style="width:60%;padding 10%;background:#00FFFF;" onclick = "Autoschedule()"> Try Auto-Scheduling Courses </button>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div style="margin:0px auto; padding-left:15%; padding-top:1000px; padding-right:15%; padding-bottom:50px;">
+    
+    <div style=  "position:absolute; width:70%;">
+      
+      <div style="display:none" id="461timetable">
+        <div class ="tt" style="background: #FF9999; left: 33.1%; top: 319px; text-align:center">
+          Seng461
+         <button type="add" onclick="RemoveCourse('461timetable', '461suggested')" style = "height:40px; width:80px; margin: 10px"> Remove </button>
+        </div>
+         <div class ="tt" style="background: #FF9999; left: 49.9%; top: 319px; text-align:center">
+          Seng461
+         <button type="add" onclick="RemoveCourse('461timetable', '461suggested')" style = "height:40px; width:80px; margin: 10px"> Remove </button>
+        </div>
+         <div class ="tt" style="background: #FF9999; left: 83.3%; top: 319px; text-align:center">
+          Seng461
+         <button type="add" onclick="RemoveCourse('461timetable', '461suggested')" style = "height:40px; width:80px; margin: 10px"> Remove </button>
+        </div>
+     </div>
+  
+  <div style="display:none" id="460timetable">
+    <div class ="tt" style=" left: 33.1%; top: 379px; text-align:center">
+      Seng460
+      <button type="add" onclick="RemoveCourse('460timetable', '460suggested')" class = "remove"> Remove </button>
+    </div>
+    
+    <div class ="tt" style=" left: 49.9%; top: 379px; text-align:center">
+      Seng460
+      <button type="add" onclick="RemoveCourse('460timetable', '460suggested')" class = "remove"> Remove </button>
+    </div>
+    <div class ="tt" style=" left: 83.3%; top: 379px; text-align:center">
+      Seng460
+      <button type="add" onclick="RemoveCourse('460timetable', '460suggested')" class = "remove"> Remove </button>
+    </div>
+  </div>
+      
+   <div style="display:none" id="320timetable">
+     <div class ="tt" style=" left: 33.1%; top: 259px; text-align:center">
+      Seng320
+    <button type="add" onclick="RemoveCourse('320timetable', '320suggested')" style="height:40px; width:80px; margin: 5px"> Remove </button>
+    </div>
+    
+    <div class ="tt" style=" left: 49.9%; top: 259px; text-align:center">
+      Seng320
+    <button type="add" onclick="RemoveCourse('320timetable', '320suggested')" style="height:40px; width:80px; margin: 5px"> Remove </button>
+    </div>
+    <div class ="tt" style=" left: 83.3%; top: 259px; text-align:center">
+      Seng320
+    <button type="add" onclick="RemoveCourse('320timetable', '320suggested')" style="height:40px; width:80px; margin: 5px"> Remove </button>
+    </div>
+    
+  </div>
+      
+     <div style="display:none" id="303timetable">
+     <div class ="tt" style=" height: 90px; left: 16.4%; top: 199px; text-align:center">
+      Seng303
+    <button type="add" onclick="RemoveCourse('303timetable', '303suggested')" style="height:40px; width:80px; margin: 17px"> Remove </button>
+    </div>
+    
+    <div class ="tt" style=" height: 90px; left: 66.7%; top: 199px; text-align:center">
+      Seng303
+    <button type="add" onclick="RemoveCourse('303timetable', '303suggested')" style="height:40px; width:80px; margin: 17px"> Remove </button>
+    </div>
+    
+  </div>
+  
+  <div style="display:none" id="111timetable">
+    <div class ="tt" style=" height: 90px; left: 16.4%; top: 289px; text-align:center">
+     ASTR111
+    <button type="add" onclick="RemoveCourse('111timetable', '111suggested')" style="height:40px; width:80px; margin: 17px"> Remove </button>
+    </div>
+    
+    <div class ="tt" style=" height: 90px; left: 66.7%; top: 289px; text-align:center">
+     ASTR111
+    <button type="add" onclick="RemoveCourse('111timetable', '111suggested')" style="height:40px; width:80px; margin: 17px"> Remove </button>
+    </div>
+  </div>
+      
+    </div>
+  <div>
+    <!-- The table very long when not useing i suggest collapsing it to make code easy to read -->
+    <table style=" width:100%;">
+      <tr>
+        <th></th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+
+
+      </tr>
+      <tr>
+        <td>8:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>8:30</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>9:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>9:30</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>10:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>10:30</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>11:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>11:30</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>12:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>12:30</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>1:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>1:30</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2:30</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>3:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>3:30</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4:00</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>4:30</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    </table>
+       
+    </div>
+  </div>
+
+
+</body>
+
+</html>
