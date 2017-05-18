@@ -1,0 +1,2 @@
+This project is a simple site designed by a group for seng 310 , limited comments , often rough coding.
+The site was simply a prototype designed to illustrate possible features in a new course registartion system
