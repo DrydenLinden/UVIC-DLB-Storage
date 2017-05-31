@@ -1,7 +1,9 @@
 <! DOCTYPE html>
 <html>
   
-  
+  <!-- The basic HTML Questionaire for the site used in a prototype mock up for class, 
+lacks the back end, as was only for
+testing user preferences -->  
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -13,7 +15,7 @@
 </header>
   
   <style>
-    
+    <!-- Some basic tables -->
     table, th, td {
       border: 2px solid black;
       border-collapse: collapse;
@@ -37,8 +39,8 @@
    <div style="width:100%; background:#005493">
 
     <form>
+      <!-- the top row of buttons -->
       <input type="button" value="My Page" onclick="window.location.href='https://uvic.ca/mypage'" />
-     
       <input type="button" value="Schedule" onclick="window.location.href='schedule.html'" /> 
       <input type="button" value="Questionnaire" onclick="window.location.href='questionnaire.html'" />
       <input type="button" value="Sign Out of UVic" onclick="window.location.href='log out.html'" style="float: right;" />
@@ -46,7 +48,7 @@
   </div>
     
     <div  class = "centered">
-    
+  <!-- Description -->  
   <h2 style="text-align: center">Suggested Courses Questionnaire</h2>
   <hr>
   <p>
@@ -63,7 +65,7 @@
     for your preferred course time, and 3 for your least preferred course time. If all are left blank or
     all are rated equally, all course times will be given equal priority.
   </p>
-  
+   <!-- Buttons -->  
   <form action="/action_page.php">
   <table style="color:blue;text-align: center" >
     <tr>
@@ -105,7 +107,7 @@
     courses are restricted to students registered in that department, those courses will not be
     suggested. Only courses which you can register in for this current semester will be suggested.</i>
   </p>
-    
+  <!-- In final version would be muatually exlusive-->  
   <form action="/questionnaire2.html">
   <input type="checkbox" name="option1" value="Education">Faculty of Education
   <br><br>
