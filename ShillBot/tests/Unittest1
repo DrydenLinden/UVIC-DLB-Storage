@@ -1,0 +1,7 @@
+import unittest
+
+from mothership.base import MothershipServer
+
+
+class handle_worker_contact(unittest.TestCase):
+    pass
