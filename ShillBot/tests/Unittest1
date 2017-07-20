@@ -1,7 +1,58 @@
+
 import unittest
+import codecs
+import os
 
+from workers.basic_worker import BasicUserParseWorker
 from mothership.base import MothershipServer
+class TestWorkerBasic(unittest.TestCase):
+
+    def test_connection(self):
+        """
+        Purpose: Test regular running of worker
+        Expectation: startup system, hit the reddit user and parse the data, fail to send to mothership (exception)
+        :
+        :return:
+        """
+       
+        try:
+            MothershipServer()
+            worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+        except ExceptionType:
+            self.fail("myFunc() raised ExceptionType unexpectedly!")
+    
+    
+       def test_parsing(self):
+        """
+        Purpose: Test regular parsing mechanisms of worker
+        Expectation: error
+        :return:
+        """
+        worker = BasicUserParseWorker(https://www.redd2it.com/user/Chrikelnel2)
+        file_path = '%s/%s' % (os.path.dirname(os.path.realpath(__file__)), 'test_resources/sample_GET_response.html')
+
+        with codecs.open(file_path, encoding='utf-8') as f:
+            text = f.read()
+
+        results, next_page = worker.parse_text(str(text).strip().replace('\r\n', ''))
+
+        self.assertRaises(WorkerException, worker.run)
+        
+        
+        
+        
+       def test_worker_add_links_in_crawled(self):
+        worker = BasicUserParseWorker("https://www.reddit.com/user/Chrikelnel")
+        worker.crawled = []
+
+        len_to_crawl_before = len(worker.to_crawl)
+        worker.add_links(["https://www.reddit.com/user/Chrikelnel"])
+        len_to_crawl_after = len(worker.to_crawl) +1
+
+        self.assertEqual(len_to_crawl_after, len_to_crawl_before)
+        
+
+      
 
 
-class handle_worker_contact(unittest.TestCase):
-    pass
+
