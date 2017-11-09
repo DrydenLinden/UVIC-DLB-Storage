@@ -1,0 +1,10 @@
+# this ansible script is designed to be the initial boot up provisioning for  the seven up server  it assumes that the "controller " has a version of apache-tomcat to be installed 
+# as well as that the controller has ssh rites. OEM agent should also be installed.
+
+
+
+#the apache folder should be copyed from the controller to the server
+- name: "UPLOAD 7UP binary and associated files"
+  synchronize: 
+    src: ~/apache
+    dest: /fs/sw_ux/

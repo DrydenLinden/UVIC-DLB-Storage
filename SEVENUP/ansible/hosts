@@ -1,0 +1,4 @@
+[7up]
+142.34.84.43 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=""
+[self]
+142.34.84.83 ansible_connection=ssh ansible_ssh_user=vagrant ansible_ssh_pass=""

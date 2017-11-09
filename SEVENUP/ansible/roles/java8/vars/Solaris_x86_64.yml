@@ -1,0 +1,4 @@
+java8_version: "1.8.0_45"
+java8_archive: "jdk-8u121-solaris-x64.tar.gz"
+java8_url: "http://apps.nrs.gov.bc.ca/pub/artifactory/ext-binaries-local/com.oracle/{{java8_archive}}"
+java8_archive_checksum : "sha1:295b5c495b7e3163edbc32dec2c8231c8659478e"

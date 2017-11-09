@@ -1,0 +1,63 @@
+#################################################################################################################################################################################
+# Dryden  linden-Bremner 2017-09-27
+# This ansible script is designed to check if the users and groups are set up properly
+# 
+#
+#
+# 
+#################################################################################################################################################################################
+
+- name: "Create Account wwwsvr" 
+  lineinfile:
+    path: /etc/passwd
+    regexp: "wwwsvr:x:779:778:apache service:/fs/u02/apps_ux/wwwsvr:/bin/bash"
+    state: present
+    line: "wwwsvr:x:779:778:apache service:/fs/u02/apps_ux/wwwsvr:/bin/bash"
+- name: "Create Account wwwadm"
+  lineinfile:
+    path: /etc/passwd
+    regexp: "wwwadm:x:778:778:apache user:/fs/u02/apps_ux/wwwadm:/bin/bash"
+    state: present
+    line: "wwwadm:x:778:778:apache user:/fs/u02/apps_ux/wwwadm:/bin/bash"
+- name: "Create Group wwwadm"
+  lineinfile:
+    path: /etc/group
+    regexp: "wwwadm:x:778:cdadmin,krclar_a,cnukin_a,adadmin,jcolladm,adadmin,cbussan_a,lmonte_a"
+    state: present
+    line: "wwwadm:x:778:cdadmin,krclar_a,cnukin_a,adadmin,jcolladm,adadmin,cbussan_a,lmonte_a"
+- name: "Add Line pam user ingroup server admin"
+  lineinfile:
+    path: /etc/pam.d/system-auth
+    regexp: "account sufficient pam_succeed_if.so user ingroup CSNR_Server_Administrators"
+    state: present
+    line: "account sufficient pam_succeed_if.so user ingroup CSNR_Server_Administrators"
+- name: "Add line AP APP deliveries" 
+  lineinfile:
+    path: /etc/pam.d/system-auth
+    regexp: "account sufficient pam_succeed_if.so user ingroup FLNR_AP_APPLICATIONDELIVERIES_C"
+    state: present
+    line: "account sufficient pam_succeed_if.so user ingroup FLNR_AP_APPLICATIONDELIVERIES_C"
+- name: "Give User wwwadm Cron Privaleges" 
+  lineinfile:
+    path: /etc/cron.allow
+    regexp: "wwwadm"
+    state: present
+    line: "wwwadm"
+- name: "Give User wwwsvr Cron Privaleges" 
+  lineinfile:
+    path: /etc/cron.allow
+    regexp: "wwwsvr"
+    state: present
+    line: "wwwsvr"
+- name: "Give User wwwadm at  Privaleges" 
+  lineinfile:
+    path: /etc/at.allow
+    regexp: "wwwadm"
+    state: present
+    line: "wwwadm"
+- name: "Give User wwwsvr  at Privaleges" 
+  lineinfile:
+    path: /etc/at.allow
+    regexp: "wwwsvr"
+    state: present
+    line: "wwwsvr"

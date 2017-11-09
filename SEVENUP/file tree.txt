@@ -1,0 +1,65 @@
+Filetree Seven up
+
+
+/
+	lrwxrwxrwx    1 root root    17 Sep  1  2016 apps_data -> /fs/u02/apps_data
+	lrwxrwxrwx    1 root root    15 Sep  1  2016 apps_ux -> /fs/u02/apps_ux
+	lrwxrwxrwx    1 root root     7 Feb  5  2017 bin -> usr/bin
+	dr-xr-xr-x.   4 root root  3072 Apr 23 05:48 boot
+	drwxr-xr-x   20 root root  3340 Apr 23 05:36 dev
+	drwxr-xr-x.  85 root root 12288 Aug 23 13:19 etc
+	drwxr-x---+   4 root root  4096 Jun  8 13:19 fs
+	drwxr-xr-x.  21 root root  4096 Jun 19 06:57 home
+	lrwxrwxrwx    1 root root     7 Feb  5  2017 lib -> usr/lib
+	lrwxrwxrwx    1 root root     9 Feb  5  2017 lib64 -> usr/lib64
+	drwx------.   2 root root 16384 Aug 16  2016 lost+found
+	drwxr-xr-x.   2 root root  4096 Mar 10  2016 media
+	drwxr-xr-x.   3 root root  4096 Mar 10  2016 mnt
+	drwxr-xr-x.   9 root root  4096 Aug 23 13:18 opt
+	dr-xr-xr-x  170 root root     0 Apr 22 22:36 proc
+	dr-xr-x---.   5 root root  4096 Apr 23 05:49 root
+	drwxr-xr-x   23 root root   800 Jun  8 13:15 run
+	lrwxrwxrwx    1 root root     8 Feb  5  2017 sbin -> usr/sbin
+	drwxr-xr-x    3 root root  4096 Sep 23  2016 shares
+	drwxr-xr-x.   2 root root  4096 Mar 10  2016 srv
+	lrwxrwxrwx    1 root root    13 Sep  1  2016 sw_ux -> /fs/u02/sw_ux
+	dr-xr-xr-x   13 root root     0 Apr 22 22:36 sys
+	drwxrwxrwt.  53 root root  4096 Sep 18 11:07 tmp
+	drwxr-xr-x.  15 root root  4096 Feb  5  2017 usr
+	drwxr-xr-x.  21 root root  4096 Jun 16 14:05 var
+
+	fs/
+		u02/
+			sw_ux/
+				oracle/
+					product/
+						agent_prod/
+							drwxr-xr-x+ 29 wwwadm wwwadm 4096 Sep 25 20:22 agent_13.2.0.0.0
+							-rw-rw-r--+  1 wwwadm wwwadm  179 Mar 24  2017 agentimage.properties
+							drwxr-xr-x+  8 wwwadm wwwadm 4096 May 29 20:06 agent_inst
+							-rw-rw-r--+  1 wwwadm wwwadm  606 Mar 24  2017 agentInstall.rsp
+
+			apps_data/
+			drwxrwxr-x+ 4 nrscdua domain users 4096 Jul  6 11:22 cwm-mis-api
+			drwxrwxr-x+ 4 wwwadm  wwwadm       4096 Jun 20 15:02 cwm-mis-api2
+			drwxrwxr-x+ 5 wwwadm  wwwadm       4096 Sep 19 14:07 fnp-client-war
+			drwxr-xr-x+ 3 nrscdua domain users 4096 Sep  2  2016 jenkins
+			drwxrwxrwt+ 6 wwwadm  wwwadm       4096 Jul 10 12:33 logs
+			drwxrwxr-x+ 2 nrscdua domain users 4096 Jul 10 12:41 temp1
+
+			apps_ux/
+			drwxrwxr-x+ 3 nrscdua domain users 4096 Jul  6 11:22 cwm-mis-api
+			drwxrwxr-x+ 3 wwwadm  wwwadm       4096 Jun 19 07:04 cwm-mis-api2
+			drwxrwxr-x+ 3 wwwadm  wwwadm       4096 Sep 21 06:41 FNP
+			drwxrwxr-x+ 4 wwwadm  wwwadm       4096 Jun 28 11:46 fnp
+			drwxrwxr-x+ 3 wwwadm  wwwadm       4096 Jul 11 11:30 fnp-client-war
+			drwxrwxr-x+ 5 wwwadm  wwwadm       4096 Jun 22 13:43 logs
+			drwxrwsr-x+ 7 nrscdua domain users 4096 Sep  2 14:58 nrscdua
+			drwxrwxr-x+ 3 wwwadm  wwwadm       4096 Mar  6  2017 sidecar
+			drwxrwxr-x+ 5 wwwadm  wwwadm       4096 Sep 13 16:56 titan
+			drwxrwxr-x+ 7 wwwadm  wwwadm       4096 Jun 30 10:57 wwwadm
+			drwxrwx---+ 6 wwwadm  wwwadm       4096 Sep 20 12:56 wwwsvr
+
+
+
+

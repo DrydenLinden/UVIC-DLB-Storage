@@ -1,0 +1,4 @@
+java8_version: "1.8.0_121"
+java8_archive: "jdk-8u121-solaris-sparcv9.tar.gz"
+java8_url: "{{ artifactory_url }}/ext-binaries-local/geoserver/{{ java8_archive }}"
+java8_archive_checksum : "sha1:27bb158fb7225631d0008b1cffaf96e0ff077475"

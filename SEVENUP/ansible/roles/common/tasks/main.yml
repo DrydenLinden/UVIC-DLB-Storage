@@ -1,0 +1,57 @@
+---
+- name: "Directory {{ tmp_artifact_cache }}"
+  file: path="{{ tmp_artifact_cache }}" state=directory mode=0777
+  become: yes
+  become_user: "{{ install_user }}"
+  tags: ["common"]
+
+- stat: path="{{ sw_home }}"
+  register: sw_home_dir
+  tags: ["common"]
+  
+- name: "Directory: {{ sw_home }}"
+  file: path="{{ sw_home }}" state=directory mode=0777
+  become: yes
+  become_user: "{{ install_user }}"
+  when: not ansible_check_mode and (not sw_home_dir.stat.exists or sw_home_dir.stat.mode != '0777')
+  tags: ["common"]
+
+- stat: path="{{ common_apps_home }}"
+  register: common_apps_install_dir
+  tags: ["common"]
+  
+- name: "Directory {{ common_apps_home }}"
+  file: path="{{ common_apps_home }}" state=directory mode=0777
+  become: yes
+  become_user: "{{ install_user }}"
+  when: not ansible_check_mode and (not common_apps_install_dir.stat.exists or common_apps_install_dir.stat.mode != '0777')
+  tags: ["common"]
+  
+- stat: path="{{ common_apps_data }}"
+  register: common_apps_data_dir
+  tags: ["common"]
+  
+- name: "Directory {{ common_apps_data }}"
+  file: path="{{ common_apps_data }}" state=directory mode=0777
+  become: yes
+  become_user: "{{ install_user }}"
+  when: not ansible_check_mode and (not common_apps_data_dir.stat.exists or common_apps_data_dir.stat.mode != '0777')
+  tags: ["common"]
+
+#- stat: path={{ common_apps_logs }}
+#  register: common_apps_logs_dir
+#- name: "Directory {{ common_apps_logs }}"
+#  file: path={{ common_apps_logs }} state=directory mode=0777
+#  become: yes
+#  become_user: "{{ install_user }}"
+#  when: not ansible_check_mode and (not common_apps_logs_dir.stat.exists or common_apps_logs_dir.stat.mode != '0777')
+  
+- name: "unzip"
+  package: name=unzip state=present use=yum
+  when: install_user == 'root' and ansible_os_family == 'RedHat'
+  tags: ["common"]
+  
+- name: "rsync"
+  package: name=rsync state=present use=yum
+  when: install_user == 'root' and ansible_os_family == 'RedHat'
+  tags: ["common"]

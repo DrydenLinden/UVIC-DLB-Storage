@@ -1,0 +1,44 @@
+---
+# tasks file for java
+- name: "Download JRE {{ jre_version }}"
+  get_url: 
+    url: "{{ jre_url }}"
+    dest: "{{ tmp_artifact_cache }}/{{ jre_archive }}"
+    checksum: "{{jre_archive_checksum}}"
+    validate_certs: False
+    timeout: 100
+  become: yes
+  become_user: "{{ install_user }}"
+  tags: [ 'java' ]
+
+- name: "Required directories"
+  file: 
+    path: "{{ item.path }}"
+    state: "{{ item.state }}"
+    mode: 0775
+  with_items:
+    - { path: "{{ jre_install_root }}", state: directory }
+    - { path: "{{ jre_install_root }}/{{ jre_version }}", state: directory }
+  become: yes
+  become_user: "{{ install_user }}"
+  
+- name: "Extract archive to {{ jre_install_root }}/{{ jre_version }}"
+  unarchive:
+    src: "{{ tmp_artifact_cache }}/{{ jre_archive }}"
+    dest: "{{ jre_install_root }}"
+    remote_src: yes
+    extra_opts: ['--transform=s,/*[^/]*,{{ jre_version }},i', '--show-stored-names']
+    creates: "{{ jre_install_root }}/{{ jre_version }}/bin/java"
+  ignore_errors: "{{ ansible_check_mode }}"
+  become: yes
+  become_user: "{{ install_user }}"
+    
+- name: 'Symlink current version'
+  file: 
+    path: "{{ jre_install_root }}/{{ jre_version_mask }}"
+    src: "{{ jre_install_root }}/{{ jre_version }}"
+    state: link
+  when: jre_set_as_current
+  ignore_errors: "{{ ansible_check_mode }}"
+  become: yes
+  become_user: "{{ install_user }}"

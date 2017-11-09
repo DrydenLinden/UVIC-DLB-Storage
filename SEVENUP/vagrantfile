@@ -1,0 +1,65 @@
+#DRYDEN LINDEN BREMNER 2017-09-18
+#THIS SCRIPT IS DESIGNED TO CREATE A MODEL VERSION OF THE SERVER SEVEN UP IN ORDER TO RUN 
+#THE PROVISIONING THAT WILL BE RUN ON IT USING ANSIBLE
+
+Vagrant.configure("2") do |config|
+	config.ssh.insert_key = false
+	##########################################################################
+	
+	config.vm.define "controller" do |controller| 
+		#inital boot
+		controller.vm.box = "centos/7"
+		# network init/disable dsa 
+		controller.vm.network "private_network" , ip: "192.168.50.8"
+		controller.vm.provision "file", source: "serverkey", destination: "serverkey" 
+		controller.vm.provision "file", source: "keys/id_rsa", destination: ".ssh/id_rsa" 
+		controller.vm.provision :shell, path:"sh-files/key_init.sh" 
+		#upload the ansible files to the controller
+		# the fire wall script as well as a script to change the chmod of the key top make it usable for ssh
+		controller.vm.provision :shell, path:"sh-files/controller.sh" 
+		
+		controller.vm.provision "ansible_local" do |ansible|
+			ansible.verbose = "v"
+			ansible.playbook = "ansible/playbook.yml"
+			ansible.install_mode = "pip"
+		end		
+	end		
+    config.vm.define "controller2" do |controller2| 
+		#inital boot
+		controller2.vm.box = "centos/7"
+		# network init/disable dsa 
+		controller2.vm.network "private_network" , ip: "192.168.50.12"
+		controller2.vm.provision "file", source: "serverkey", destination: "serverkey" 
+		controller2.vm.provision "file", source: "keys/id_rsa", destination: ".ssh/id_rsa" 
+		controller2.vm.provision :shell, path:"sh-files/key_init.sh" 
+		#upload the ansible files to the controller
+		# the fire wall script as well as a script to change the chmod of the key top make it usable for ssh
+		controller2.vm.provision :shell, path:"sh-files/controller.sh" 
+		
+	end			
+        config.vm.define "controller3" do |controller3| 
+		#inital boot
+		controller3.vm.box = "centos/7"
+		# network init/disable dsa 
+		controller3.vm.network "private_network" , ip: "192.168.50.11"
+		controller3.vm.provision "file", source: "serverkey", destination: "serverkey" 
+		controller3.vm.provision "file", source: "keys/id_rsa", destination: ".ssh/id_rsa" 
+		controller3.vm.provision :shell, path:"sh-files/key_init.sh" 
+		#upload the ansible files to the controller
+		# the fire wall script as well as a script to change the chmod of the key top make it usable for ssh
+		controller3.vm.provision :shell, path:"sh-files/controller.sh" 
+		
+	end		
+        config.vm.define "controller4" do |controller4| 
+		#inital boot
+		controller4.vm.box = "centos/7"
+		# network init/disable dsa 
+		controller4.vm.network "private_network" , ip: "192.168.50.13"
+		controller4.vm.provision "file", source: "serverkey", destination: "serverkey" 
+		controller4.vm.provision "file", source: "keys/id_rsa", destination: ".ssh/id_rsa" 
+		controller4.vm.provision :shell, path:"sh-files/key_init.sh" 
+		#upload the ansible files to the controller
+		# the fire wall script as well as a script to change the chmod of the key top make it usable for ssh
+		controller4.vm.provision :shell, path:"sh-files/controller.sh" 
+	end		
+end

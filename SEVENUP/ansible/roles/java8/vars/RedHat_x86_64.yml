@@ -1,0 +1,4 @@
+java8_version: "1.8.0_101"
+java8_archive: "server-jre-8u101-linux-x64.tar.gz"
+java8_archive_checksum : "sha1:9c0de892947ca6b97a342380524a7b47567d7ea4"
+java8_url: "http://apps.nrs.gov.bc.ca/pub/artifactory/ext-binaries-local/com.oracle.download/otn-pub/java/jdk/8u101-b13/{{ java8_archive }}"

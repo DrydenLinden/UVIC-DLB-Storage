@@ -1,0 +1,116 @@
+#################################################################################################################################################################################
+# Dryden  linden-Bremner 2017-09-27
+# This ansible script is designed to check if the file structure of the server "seven up"  has been configured correctly and has appropriate fil permissions , sym links and ownership
+# 
+#
+#
+# check fs
+#################################################################################################################################################################################
+
+#takes the filepaths and saves them to the registry along with the additional stat info 
+- name: Creating directorys fs/ and u02
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0750
+    owner: wwwadm
+    group: wwwadm
+  with_items:
+    - /fs
+    - /fs/u02
+- name: Creating directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: 0775
+    owner: wwwadm
+    group: wwwadm
+  with_items:
+    - /fs/u02/sw_ux
+    - /fs/u02/apps_ux
+    - /fs/u02/apps_data
+    - /fs/u02/sw_ux/oracle
+    - /fs/u02/apps_ux/titan/tomcat
+
+- name: Creating directorys
+  file:
+    path: "{{ item }}"
+    owner: wwwadm
+    group: wwwadm
+    state: directory
+    mode: 0700
+  with_items:
+    - /fs/u02/lost+found
+
+
+- name: "Creating sym link sw_ux"
+  file:
+    state: link
+    src: /fs/u02/sw_ux
+    dest: /sw_ux
+
+- name: "Creating sym link apps_ux"
+  file:
+    state: link
+    src: /fs/u02/apps_ux
+    dest: /apps_ux
+
+- name: "Creating sym link apps_data"
+  file:
+    state: link
+    src: /fs/u02/apps_data
+    dest: /apps_data
+
+- name: "Unzip list"
+  shell: rpm -q unzip
+  register: unzip
+
+- name: "Rsync list"
+  shell: rpm -q rsync
+  register: rsync
+
+- name: "Check if rsync exists"
+  assert:
+    that: rsync.stdout.find('package Rsync is not installed') == -1
+    msg: "Rsync was not installed rpm says = {{ rsync.stdout }}"
+
+- name: "Check if unzip exists"
+  assert:
+    that: unzip.stdout.find('package unzip is not installed') == -1
+    msg: "Unzip was not installed rpm says = {{ unzip.stdout }}"
+  
+- name: "Check Curl"
+  shell: curl -V
+- stat:
+    path: /sw_ux/
+  register: jve
+
+# - name: "Install JVE"
+  # synchronize: 
+    # src: ~/jdk1.8.0_144
+    # dest: /sw_ux
+  # when:  jve.stat.isreg is not defined 
+
+# - name: "Get Java Version"
+  # shell: java -version
+  # environment: 
+    # JAVA_HOME: export JAVA_HOME=/sw_ux/jdk1.8.0_144/       export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.144-0.b01.el7_4.x86_64
+    # PATH: "/sw_ux/jdk1.8.0_144/bin:{{ ansible_env.PATH }}"
+  # register: jv
+  
+# - shell: echo "{{jv}}"
+  # register: javaVInfo
+# - name: "Check Java Version Info"
+  # assert:
+    # that: javaVInfo.stdout.find('1.8.0_144-b01') != -1 
+    # msg: "Java did not have version 1.8.0_144 instead java -version yeilded {{ javaVInfo}},"
+   
+   #Java should have 1.8.0_101-b13 on the actual server sevenup as of 2017-09-29
+# - name: "Serverinfo"
+  # command: sh /apps_ux/titan/tomcat/bin/version.sh
+  # environment: 
+    # JAVA_HOME: /sw_ux/jdk1.8.0_144/
+    # PATH: "/sw_ux/jdk1.8.0_144/bin:{{ ansible_env.PATH }}"
+  # register: version_info
+
+

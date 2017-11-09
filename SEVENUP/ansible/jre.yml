@@ -1,0 +1,5 @@
+- hosts: 7up
+  become: yes
+  become_user: wwwadm
+  roles:
+  - jre

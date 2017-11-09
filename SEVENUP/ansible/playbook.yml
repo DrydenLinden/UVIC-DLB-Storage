@@ -1,0 +1,4 @@
+---
+# - import_playbook: jre.yml
+- import_playbook: usercheck.yml
+- import_playbook: filecheck.yml

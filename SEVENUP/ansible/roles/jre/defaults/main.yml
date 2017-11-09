@@ -1,0 +1,14 @@
+---
+# defaults file for java
+jre_version: "1.8.0_101"
+jre_version_mask: "1.8.x"
+
+jre_archive: "server-jre-8u101-linux-x64.tar.gz"
+jre_archive_checksum : "sha1:9c0de892947ca6b97a342380524a7b47567d7ea4"
+jre_url: "{{ artifactory_url }}/ext-binaries-local/com.oracle.download/otn-pub/java/jdk/8u101-b13/{{ jre_archive }}"
+
+jre_install_root: "{{ sw_home }}/java"
+
+jre_set_as_current: true
+
+tmp_artifact_cache: "/tmp/artifacts"

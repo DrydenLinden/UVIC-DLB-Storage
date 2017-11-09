@@ -1,0 +1,38 @@
+---
+- name: Load OS-specific parameters
+  include_vars:
+    file: "vars/{{ ansible_os_family }}_{{ ansible_architecture }}.yml"
+
+- stat: path="{{ tmp_artifact_cache }}/{{ java8_archive }}"
+  register: java8_archive_file
+  tags: [ 'java8' ]
+
+- name: "Download Java {{ java8_version }}"
+  get_url: url="{{ java8_url }}" dest="{{ tmp_artifact_cache }}/{{ java8_archive }}" checksum="{{ java8_archive_checksum }}" validate_certs=false mode=0644 timeout=100
+  when: not java8_archive_file.stat.exists
+  tags: [ 'java8' ]
+  
+- name: "Directory {{ java_install_root }}"
+  file: path="{{ java_install_root }}" state=directory mode=0755
+  become: yes
+  become_user: "{{ install_user }}"
+  tags: [ 'java8' ]
+  
+- name: "Extract Java {{ java8_version }}"
+  unarchive:
+    src: "{{ tmp_artifact_cache }}/{{ java8_archive }}"
+    dest: "{{ java_install_root }}"
+    remote_src: yes
+    extra_opts: ['--transform=s,/*[^/]*,{{ java8_version }},i', '--show-stored-names']
+    creates: "{{ java_install_root }}/{{ java8_version }}"
+  ignore_errors: "{{ ansible_check_mode }}"
+  become: yes
+  become_user: "{{ install_user }}"
+  tags: [ 'java8' ]
+    
+- name: "Link {{ java8_version }} to java"
+  file: path="{{ java_install_root }}/java" src="{{ java_install_root }}/{{ java8_version }}" state=link
+  ignore_errors: "{{ ansible_check_mode }}"
+  become: yes
+  become_user: "{{ install_user }}"
+  tags: [ 'java8' ]

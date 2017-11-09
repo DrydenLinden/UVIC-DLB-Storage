@@ -1,0 +1,14 @@
+
+cd apache
+tar xvfz apache-tomcat-7.0.70.tar.gz
+cd apache-tomcat-7.0.70
+sudo chmod 777 bin
+cd bin
+sudo tar xvfz commons-daemon-native.tar.gz
+sudo chmod 777 commons-daemon-1.0.15-native-src
+cd commons-daemon-1.0.15-native-src
+sudo chmod 777 unix
+cd unix 
+
+sudo ./configure --with-java=/lib/jvm/java
+sudo make

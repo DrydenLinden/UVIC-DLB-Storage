@@ -1,0 +1,7 @@
+tmp_artifact_cache: "/tmp/ansible_cache"
+common_root_dir: "/fs/u02"
+sw_home: "/sw_ux"
+common_apps_home: "/apps_ux"
+common_apps_data: "/apps_data"
+common_apps_logs: "/apps_logs"
+artifactory_url: "https://apps.nrs.gov.bc.ca/pub/artifactory"
